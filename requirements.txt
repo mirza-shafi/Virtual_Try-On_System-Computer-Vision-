@@ -1,0 +1,10 @@
+transformers
+torch
+torchvision
+gradio
+pillow
+scipy
+diffusers
+accelerate
+pillow-heif
+python-dotenv

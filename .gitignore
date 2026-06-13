@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+venv/
+env/
+.ipynb_checkpoints/
+notebook_dump.py
