@@ -83,7 +83,7 @@ custom_css = """
 """
 
 # Define Gradio UI with a premium theme
-with gr.Blocks(title="Virtual Try-On System", theme=gr.themes.Soft(primary_hue="teal", secondary_hue="rose"), css=custom_css) as demo:
+with gr.Blocks(title="Virtual Try-On System") as demo:
     gr.HTML("""
         <div class="title-text">Virtual Try-On Studio</div>
         <div class="subtitle-text">Transform your wardrobe with AI. Upload a photo, select a region, and describe your new look.</div>
@@ -93,7 +93,7 @@ with gr.Blocks(title="Virtual Try-On System", theme=gr.themes.Soft(primary_hue="
         with gr.Column(scale=1):
             with gr.Group():
                 input_image = gr.Image(type="pil", label="Your Photo", height=400)
-                region = gr.Radio(["Upper", "Lower"], label="Body Region to Change", value="Upper", inline=True)
+                region = gr.Radio(["Upper", "Lower"], label="Body Region to Change", value="Upper")
                 prompt = gr.Textbox(
                     label="Clothing Description", 
                     placeholder="e.g. A stylish black leather jacket...",
@@ -119,5 +119,5 @@ with gr.Blocks(title="Virtual Try-On System", theme=gr.themes.Soft(primary_hue="
 if __name__ == "__main__":
     logger.info("Starting Gradio app...")
     port = int(os.getenv("PORT", 7860))
-    demo.launch(server_name="0.0.0.0", server_port=port, share=False)
+    demo.launch(server_name="0.0.0.0", server_port=port, share=False, theme=gr.themes.Soft(primary_hue="teal", secondary_hue="rose"), css=custom_css)
 
