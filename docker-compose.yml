@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  virtual-tryon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: virtual-tryon-app:latest
+    container_name: virtual_tryon
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    volumes:
+      # Mount HuggingFace model cache so models aren't re-downloaded on each restart
+      - hf_cache:/workspace/.cache/huggingface
+    restart: unless-stopped
+    # Uncomment the lines below if you have an NVIDIA GPU:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+volumes:
+  hf_cache:
+    driver: local
